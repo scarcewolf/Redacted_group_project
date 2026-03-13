@@ -9,8 +9,11 @@ with open("Saves.json", 'r') as f:
 
 
 class App(ctk.CTk):
+    #made a function to handle making a button for the first frame as it was very repetitive
     def MainButton(self, Text ,root):
         return ctk.CTkButton(root, text=Text, width=200, height=100, font=('times', 40, 'bold'), corner_radius=32)
+
+    #Creates the main gui
     def __init__(self):
         super().__init__()
         self.attributes('-fullscreen', True)
@@ -33,6 +36,8 @@ class App(ctk.CTk):
 
         self.frame2 = ctk.CTkScrollableFrame(self, width=800)
         self.frame2.grid(row=0, column=2, padx=10, pady=(10, 0), sticky='nsw')
+
+        #Iterates through the array held in the dictionary to create a button for each value
         for e, i in enumerate(Loaded_Data["ToDo"]):
             self.Button = ctk.CTkButton(self.frame2, text=i, font=('times', 20), width=790)
             self.Button.grid(row=e,column=0)
